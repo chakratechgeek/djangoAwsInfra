@@ -107,6 +107,6 @@ jobs:
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         STATUS: ${{ secrets.STATUS }}
       
-      if: STATUS == "YES"
+      if: secrets.STATUS == "YES"
       run: terraform destroy -auto-approve -input=false
 
