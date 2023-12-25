@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket         = "temp1983"
+    key            = "django/statefile.tfstate"
+    region         = "ap-south-1"
+    encrypt        = true
+  }
+}
+
 provider "aws" {
   region = "ap-south-1"
   # Add any other necessary authentication parameters
