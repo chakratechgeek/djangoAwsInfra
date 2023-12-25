@@ -5,22 +5,22 @@ provider "aws" {
 
 # Reference to the existing VPC by ID
 data "aws_vpc" "existing_vpc" {
-  id = "vpc-028b13bb3e33cf1ae"  # Replace with your existing VPC ID
+  id = "vpc-028b13bb3e33cf1ae" # Replace with your existing VPC ID
 }
 
 # Reference to the existing subnet within the existing VPC by ID
 data "aws_subnet" "existing_subnet" {
   vpc_id = data.aws_vpc.existing_vpc.id
-  id     = "subnet-0d88dc6bc2c2c2b27"  # Replace with your existing subnet ID
+  id     = "subnet-0d88dc6bc2c2c2b27" # Replace with your existing subnet ID
 }
 
 resource "aws_instance" "example_instance" {
-  ami                    = "ami-03f4878755434977f"
-  instance_type          = "t2.small"
-  key_name               = "django-server-l-0-dev-key"
-  subnet_id              = data.aws_subnet.existing_subnet.id
-  associate_public_ip_address = false  # Associates a public IP address with the instance
-  
+  ami                         = "ami-03f4878755434977f"
+  instance_type               = "t2.small"
+  key_name                    = "django-server-l-0-dev-key"
+  subnet_id                   = data.aws_subnet.existing_subnet.id
+  associate_public_ip_address = false # Associates a public IP address with the instance
+
 }
 
 resource "aws_eip" "example_eip" {
