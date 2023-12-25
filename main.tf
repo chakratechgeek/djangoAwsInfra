@@ -28,4 +28,3 @@ resource "aws_eip" "example_eip" {
   # Other EIP configurations if needed
 }
 
-#dummy
