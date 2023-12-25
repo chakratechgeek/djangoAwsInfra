@@ -27,4 +27,3 @@ resource "aws_eip" "example_eip" {
   instance = aws_instance.example_instance.id
   # Other EIP configurations if needed
 }
-#Sample added
