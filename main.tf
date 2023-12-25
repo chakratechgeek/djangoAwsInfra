@@ -1,9 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "temp1983"
-    key            = "django/statefile.tfstate"
-    region         = "ap-south-1"
-    encrypt        = true
+    bucket  = "temp1983"
+    key     = "django/statefile.tfstate"
+    region  = "ap-south-1"
+    encrypt = true
   }
 }
 
