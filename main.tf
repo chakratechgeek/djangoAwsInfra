@@ -30,6 +30,7 @@ resource "aws_instance" "example_instance" {
   key_name                    = "django-server-l-0-dev-key"
   subnet_id                   = data.aws_subnet.existing_subnet.id
   associate_public_ip_address = false # Associates a public IP address with the instance
+  spot_price                  = "0.005"
 
 }
 
