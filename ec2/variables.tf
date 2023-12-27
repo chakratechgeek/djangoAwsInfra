@@ -1,14 +1,4 @@
 
-
-variable "bucket_name" {
-  type = string
-}
-
-variable "bucket_key" {
-  type = string
-
-}
-
 variable "vpc_id" {
   type = string
 
@@ -34,11 +24,6 @@ variable "key_name" {
 
 }
 
-variable "need_encrypt" {
-  type    = bool
-  default = true
-
-}
 
 variable "pub_ip_associate" {
   type    = bool
