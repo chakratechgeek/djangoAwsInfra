@@ -1,0 +1,3 @@
+variable "dummy" {
+  type = string
+}
