@@ -1,13 +1,4 @@
-#adding this comment
-terraform {
-  backend "s3" {
-    bucket = var.bucket_name
-    #key     = "django/statefile.tfstate"
-    key     = var.bucket_key
-    region  = local.aws_region
-    encrypt = var.need_encrypt
-  }
-}
+
 
 provider "aws" {
   region = local.aws_region
