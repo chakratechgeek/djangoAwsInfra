@@ -1,7 +1,7 @@
 #adding this comment
 terraform {
   backend "s3" {
-    bucket  = var.bucket_name
+    bucket = var.bucket_name
     #key     = "django/statefile.tfstate"
     key     = var.bucket_key
     region  = local.aws_region
@@ -31,7 +31,7 @@ resource "aws_instance" "example_instance" {
   key_name                    = var.key_name
   subnet_id                   = data.aws_subnet.existing_subnet.id
   associate_public_ip_address = var.pub_ip_associate # Associates a public IP address with the instance
-  tags = local.common_tags
+  tags                        = local.common_tags
 
 }
 
