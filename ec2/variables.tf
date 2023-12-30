@@ -30,3 +30,9 @@ variable "pub_ip_associate" {
   default = false
 }
 
+variable "create_instance" {
+  type = bool
+  default=false
+  
+}
+
