@@ -28,7 +28,7 @@ resource "aws_instance" "example_instance" {
 }
 
 resource "aws_eip" "example_eip" {
-  instance = aws_instance.example_instance[0].id
+  instance = length(aws_instance.example_instance) > 0 ? aws_instance.example_instance[0].id : null
   # Other EIP configurations if needed
   depends_on = [aws_instance.example_instance]
 }
