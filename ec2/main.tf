@@ -28,8 +28,8 @@ resource "aws_instance" "example_instance" {
 }
 
 resource "aws_eip" "example_eip" {
-  instance = aws_instance.example_instance.id
+  instance = aws_instance.example_instance[0].id
   # Other EIP configurations if needed
-  depends_on = [aws_instance.example_instance[count.index]]
+  depends_on = [aws_instance.example_instance]
 }
 
