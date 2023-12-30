@@ -17,7 +17,7 @@ data "aws_subnet" "existing_subnet" {
 }
 
 resource "aws_instance" "example_instance" {
-  count = var.create_instance ? 1 : 0
+  count                       = var.create_instance ? 1 : 0
   ami                         = var.ec_ami
   instance_type               = var.instance_type
   key_name                    = var.key_name
@@ -30,6 +30,6 @@ resource "aws_instance" "example_instance" {
 resource "aws_eip" "example_eip" {
   instance = aws_instance.example_instance.id
   # Other EIP configurations if needed
-  depends_on = [ aws_instance.example_instance ]
+  depends_on = [aws_instance.example_instance[count.index]]
 }
 
