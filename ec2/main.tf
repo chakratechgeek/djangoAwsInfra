@@ -30,8 +30,8 @@ resource "aws_instance" "example_instance" {
 resource "aws_spot_instance_request" "example_instance" {
   count                       = var.spot_create_instance ? 1 : 0
   ami                         = var.ec_ami
-  spot_type              = "one-time"
-  wait_for_fulfillment   = "true"
+  spot_type                   = "one-time"
+  wait_for_fulfillment        = "true"
   instance_type               = var.instance_type
   key_name                    = var.key_name
   subnet_id                   = data.aws_subnet.existing_subnet.id
@@ -45,4 +45,12 @@ resource "aws_eip" "example_eip" {
   # Other EIP configurations if needed
   depends_on = [aws_instance.example_instance]
 }
+
+resource "aws_eip" "example_eips" {
+  instance = length(aws_spot_instance_request.example_instance) > 0 ? aws_spot_instance_request.example_instance[0].id : null
+  # Other EIP configurations if needed
+  depends_on = [aws_spot_instance_request.example_instance]
+}
+
+
 
