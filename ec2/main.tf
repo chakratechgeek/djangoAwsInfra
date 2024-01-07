@@ -49,11 +49,6 @@ resource "aws_eip" "example_eip" {
   depends_on = [aws_instance.example_instance]
 }
 
-resource "aws_eip" "example_eips" {
-  instance = length(aws_spot_instance_request.example_instance) > 0 ? aws_spot_instance_request.example_instance[0].id : null
-  # Other EIP configurations if needed
-  depends_on = [aws_spot_instance_request.example_instance]
-}
 
 
 
