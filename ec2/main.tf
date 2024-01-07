@@ -37,6 +37,9 @@ resource "aws_spot_instance_request" "example_instance" {
   subnet_id                   = data.aws_subnet.existing_subnet.id
   associate_public_ip_address = var.pub_ip_associate # Associates a public IP address with the instance
   tags                        = local.common_tags
+  provisioner "local-exec" {
+    command = "sleep 180"
+  }
 
 }
 
