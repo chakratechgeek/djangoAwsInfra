@@ -27,6 +27,20 @@ resource "aws_instance" "example_instance" {
 
 }
 
+resource "aws_spot_instance_request" "example_instance" {
+  count                       = var.spot_create_instance ? 1 : 0
+  ami                         = var.ec_ami
+  spot_type              = "one-time"
+  block_duration_minutes = "120"
+  wait_for_fulfillment   = "true"
+  instance_type               = var.instance_type
+  key_name                    = var.key_name
+  subnet_id                   = data.aws_subnet.existing_subnet.id
+  associate_public_ip_address = var.pub_ip_associate # Associates a public IP address with the instance
+  tags                        = local.common_tags
+
+}
+
 resource "aws_eip" "example_eip" {
   instance = length(aws_instance.example_instance) > 0 ? aws_instance.example_instance[0].id : null
   # Other EIP configurations if needed
