@@ -31,7 +31,6 @@ resource "aws_spot_instance_request" "example_instance" {
   count                       = var.spot_create_instance ? 1 : 0
   ami                         = var.ec_ami
   spot_type              = "one-time"
-  block_duration_minutes = "120"
   wait_for_fulfillment   = "true"
   instance_type               = var.instance_type
   key_name                    = var.key_name
